@@ -1,14 +1,14 @@
-
-const slides = document.getElementsByClassName("sliders");
+const slides = document.getElementsByClassName("slider");
 const navlinks = document.getElementsByClassName("slider_navlink");
+const shoeSection = document.getElementById("nike");
 
 let currentSlide = 0;
-  
+
 document.getElementById("nav-button-next").addEventListener("click", () => {
-  changeSlide(currentSlide + 1)
+  changeSlide(currentSlide + 1);
 });
 document.getElementById("nav-button-prev").addEventListener("click", () => {
-  changeSlide(currentSlide - 1)
+  changeSlide(currentSlide - 1);
 });
 
 const SLIDE_BG_STYLE = {
@@ -16,18 +16,22 @@ const SLIDE_BG_STYLE = {
   RED: "linear-gradient(89.45deg, #E70F3E -1.08%, #940185 99.56%)"
 };
 const SLIDE_BG_PAGE = ["BLUE", "RED"];
-shoeSection.style.background = SLIDE_BG_STYLE[SLIDE_BG_PAGE[moveTo]];
 
 function changeSlide(moveTo) {
-  if (moveTo >= slides.length) { moveTo = 0; }
-  if (moveTo < 0) { moveTo = slides.length - 1; }
+  if (moveTo >= slides.length) { moveTo = 1; }
+  if (moveTo < 0) { moveTo = slides.length - 1 ; }
 
   slides[currentSlide].classList.toggle("active");
   navlinks[currentSlide].classList.toggle("active");
+  shoeSection.classList.add('transitioning');
+
+  setTimeout(() => {
+    shoeSection.style.background = SLIDE_BG_STYLE[SLIDE_BG_PAGE[moveTo]];
+    shoeSection.classList.remove('transitioning');
+  }, 500); 
 
   slides[moveTo].classList.toggle("active");
   navlinks[moveTo].classList.toggle("active");
-  shoeSection.style.background = SLIDE_BG_STYLE[SLIDE_BG_PAGE[moveTo]];
   currentSlide = moveTo;
 }
 
@@ -36,8 +40,36 @@ document.querySelectorAll('.slider_navlink').forEach((bullet, bulletIndex) => {
     if (currentSlide !== bulletIndex) {
       changeSlide(bulletIndex);
     }
-  })
+  });
 });
+
+function slide() {
+  const text1 = document.getElementById('text1');
+  const text2 = document.getElementById('text2');
+  const transition = document.getElementById('transition-part');
+
+  text1.style.opacity = '0';
+  text1.style.visibility = 'hidden';
+
+  transition.style.opacity = '1';
+  transition.style.visibility = 'visible';
+
+  setTimeout(() => {
+    transition.style.opacity = '1';
+    transition.style.visibility = 'visible';
+
+    text2.style.opacity = '1';
+    text2.style.visibility = 'visible';
+  }, 500); 
+}
+const button = document.querySelector(".btn");
+
+const callback = () => {
+	button.classList.add("clicked");
+};
+
+button.addEventListener("click", callback);
+
 
 
 // document.addEventListener('DOMContentLoaded', (event) => {

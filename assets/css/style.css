@@ -181,113 +181,109 @@ body {
     }
 }
 
-
 .nike {
+    position: relative;
     overflow: hidden;
     height: 100vh;
-    position: relative;
     background: linear-gradient(269.2deg, #14ABF6 18.25%, #B013E7 97.02%);
-
-    .hamburger {
-        padding-inline: 40px;
-        width: 100%;
-        position: absolute;
-        display: flex;
-        gap: 20%;
-        align-items: center;
-        z-index: 2;
-
-        .material-symbols-outlined {
-
-            font-size: 40px;
-
-        }
-
-        ul {
-            display: flex;
-            gap: 30px;
-        }
-
-        li {
-            font-family: "montserrat";
-            font-size: 32px;
-            font-weight: 500;
-            text-align: center;
-            list-style: none;
-        }
-
-        a {
-            text-decoration: none;
-            color: #FFFFFF;
-        }
-
-        .icons {
-            color: #ffffff;
-        }
-    }
-
-}
-
-.nike1,
-.nike2 {
-    transition: transform 1s ease-in-out 0.8s, opacity 1s ease-in-out 0.5s;
-    height: 100%;
-    position: absolute;
+    opacity: 1;
     width: 100%;
 }
 
-.nike1 {
 
-    z-index: 1;
+.hamburger {
+    padding-inline: 40px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    gap: 20%;
+    align-items: center;
+    z-index: 2;
+
+    .material-symbols-outlined {
+
+        font-size: 40px;
+
+    }
+
+    ul {
+        display: flex;
+        gap: 30px;
+    }
+
+    li {
+        font-family: "montserrat";
+        font-size: 32px;
+        font-weight: 500;
+        text-align: center;
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+
+    .icons {
+        color: #ffffff;
+    }
 }
 
-.nike2 {
-    z-index: 0;
+.transitioning {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    transition: transform 1.5s ease;
+
 }
 
-.nike1.inactive {
+.transitioning.add {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.transitioning.remove {
+    opacity: 0;
     transform: translateX(-100%);
 }
 
-.nike2.inactive {
-    transform: translateX(0%);
-}
-
-.nike1 .banner,
-.nike2 .banner {
-    transition: transform 1s ease-in 0.8s;
-    transform: translateX(0);
-    height: 100%;
-    width: 100%;
-}
-
-/* .nike1.inactive .container {
-    transform: translateX(0%);
-}
-
-.nike2.inactive .container {
-    transform: translateX(100%);
-}    */
-.nike1.inactive .banner,
-.nike2.inactive .banner {
-    transform: translateX(-20%);
-}
-
 .slider {
-    position: relative;
-    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    width: 75%;
+    transform: translateX(-50%);
+    left: 50%;
 }
+
+.container {
+    height: 100vh;
+    overflow: hidden;
+    width: 100%;
+    transition: opacity 0s ease, transform 1.5s ease;
+}
+
+.nike .slider.active .container {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.nike .slider:not(.active) .container {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
 
 .banner .blue {
-    transform: translate(280px, -40px);
+    transform: translate(80px, -45px);
 }
 
 .banner .red {
-    transform: translate(320px, -70px);
+    transform: translate(140px, -80px);
 }
 
-.image {
-    width: 62%;
+.nike .image {
+    width: 84%;
     position: fixed;
 
     img {
@@ -295,9 +291,9 @@ body {
     }
 }
 
-.title {
+.nike .title {
 
-    transform: translate(265px, 290px);
+    transform: translate(70px, 290px);
     font-family: "Fugaz One" !important;
     font-size: 220px;
     font-weight: 400;
@@ -314,9 +310,9 @@ body {
     -webkit-text-stroke: 2px white;
 }
 
-.text {
+.nike .text {
 
-    transform: translate(18%, 500px);
+    transform: translate(6%, 500px);
     color: #ffffff;
     position: relative;
 
@@ -324,7 +320,7 @@ body {
         font-family: "Montserrat";
         font-size: 16px;
         margin: 0;
-        width: 30%;
+        width: 35%;
 
     }
 
@@ -349,13 +345,12 @@ body {
     }
 }
 
-
 .arrow {
-    transform: translateY(40%);
+    transform: translateY(95%);
     width: 100%;
     height: 100%;
     z-index: 2;
-    position: absolute;
+    position: relative;
     display: flex;
     justify-content: space-between;
 
@@ -417,40 +412,37 @@ body {
         align-items: center;
         background-color: #cae5f9;
         padding: 10px 80px;
-
     }
 
-    h1 {
+    nav h1 {
         font-family: Bainsley;
         font-size: 32px;
         line-height: 0;
         text-align: center;
         color: #1d1d1d;
-
     }
 
-    ul {
+    nav ul {
         display: flex;
         gap: 80px;
     }
 
-    li {
+    nav li {
         font-family: "montserrat";
         text-align: center;
         list-style: none;
     }
 
-    a {
+    nav a {
         text-decoration: none;
         color: #1d1d1d;
         font-family: Bainsley;
         font-size: 16px;
         font-weight: 600;
         text-align: center;
-
     }
 
-    button {
+    nav button {
         font-family: Bainsley;
         font-size: 16px;
         font-weight: 600;
@@ -460,54 +452,315 @@ body {
         border-radius: 50px;
         border: none;
         background-color: #ffffff;
+    }
+}
 
+.landscape .text1 .title {
+    line-height: 1;
+}
+
+.landscape .title h1 {
+    margin-bottom: 20px;
+    font-family: 'Bainsley', sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.landscape .text1,
+.landscape .text2 {
+    position: relative;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landscape .text1 {
+    top: -50%;
+    transform: translateY(50%);
+}
+
+.landscape .hero {
+    transition: transform 1s ease;
+
+
+}
+
+#text2 {
+    z-index: 5;
+    position: relative;
+    top: -68%;
+    transform: translateY(50%);
+}
+
+.text2 .title {
+    width: 28%;
+    text-align: center;
+}
+
+.landscape button,
+.landscape .text2 button {
+    background: #FFD600;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: 600;
+    border: none;
+    color: #232323;
+}
+.landscape .btn{
+    transition: margin 3s ease;
+}
+.landscape .btn.clicked{
+    margin-left: 50px;
+}
+
+@keyframes button {
+    0% {
+        left: 0;
     }
 
-    .wind,
-    .cloud {
-        width: 100%;
+    50% {
+        left: 5%;
     }
 
-    .wind {
-        position: relative;
-        z-index: 1;
+}
 
+.text2 .bottom p {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #232323;
+}
+
+.landscape .text2 .bottom {
+    margin-top: 10px;
+    gap: 20px;
+    display: flex;
+    border: 1px solid #FFD600;
+    background-color: #FFFFFF;
+    border-radius: 50px;
+    padding: 0 0 0 30px;
+}
+
+.landscape .text1,
+.landscape .text2,
+.transition-part {
+    opacity: 1;
+    transition: opacity 1.5s ease, visibility 1.5s ease, all 2s ease-in-out;
+}
+
+#text2, .transition-part {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.text1 span {
+    font-size: 23px;
+}
+
+.text2 span {
+    font-size: 32px;
+}
+
+.landscape .title span {
+    display: block;
+    font-family: Bainsley;
+    text-align: center;
+    color: #000000;
+
+}
+
+.animation {
+    position: relative;
+}
+
+.wind1,
+.wind2,
+.wind3 {
+    width: 110%;
+}
+
+.wind,
+.cloud {
+    width: 100%;
+}
+
+.wind1 {
+    position: absolute;
+    transform: translate(-100px, -15px);
+}
+
+.wind1 img,
+.cloud1 img {
+    position: relative;
+    animation: run1 15s linear infinite;
+}
+
+@keyframes run1 {
+    0% {
+        left: 0;
     }
 
-    .cloud {
-        position: relative;
-        z-index: 2;
+    50% {
+        left: 5%;
     }
 
-    img {
-        width: 100%;
+    100% {
+        left: 0;
+    }
+}
+
+.wind2 {
+    transform: translateY(110px);
+}
+
+
+
+.wind3 {
+    transform: translateY(40px);
+}
+
+.wind3 img,
+.wind2 img,
+.cloud2 img,
+.cloud3 img,
+.cloud4 img {
+    position: relative;
+    animation: run2 15s linear infinite;
+}
+
+@keyframes run2 {
+    0% {
+        right: 0;
     }
 
-    .mountains {
-        transform: translateY(-100%);
-        left: 25%;
-        width: 75%;
-        z-index: 3;
-        position: relative;
-
-
+    50% {
+        right: 5%;
     }
 
-    .forest1 {
-        top: 45%;
-        width: 42%;
-        position: absolute;
-        z-index: 4;
-
+    100% {
+        right: 0;
     }
+}
+
+.cloud1 {
+    position: absolute;
+    left: -8%;
+    width: 20%;
+
+}
+
+.cloud2 {
+    position: absolute;
+    top: 200px;
+    width: 25%;
+    left: -12%;
+}
+
+.cloud3 {
+    position: absolute;
+    right: 20%;
+    width: 20%;
+    top: -10px;
+}
+
+.cloud4 {
+    width: 50%;
+    position: absolute;
+    right: -10%;
+    top: 150px !important;
+}
+
+.wind {
+    position: relative;
+    z-index: 1;
+}
+
+.cloud {
+    position: absolute;
+    z-index: 2;
+    top: 16%;
+}
+
+img {
+    width: 100%;
+}
 
 
-    .forest2 {
-        width: 32%;
-        position: absolute;
-        top: 75.5%;
-        right: 10%;
-        z-index: 4;
-    }
+.mountains {
+    transform: translateY(-90%);
+    left: 45%;
+    width: 60%;
+    z-index: 2;
+    position: relative;
+}
+
+.forest1 {
+    top: 60%;
+    width: 55%;
+    left: -5%;
+    position: absolute;
+    z-index: 4;
+    
+}
+
+
+.forest2 {
+    width: 30%;
+    position: absolute;
+    top: 78%;
+    right: 12%;
+    z-index: 4;
+
+}
+
+.rock {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.grass {
+    width: 80%;
+    position: relative;
+    z-index: 2;
+    transform: translate(-25%, -8%);
+    transition: transform 1s ease;
+
+}
+
+.man {
+    width: 8%;
+    position: absolute;
+    z-index: -1;
+    left: 22%;
+    top: -42%;
+}
+
+.transition-part {
+    z-index: 5;
+    transform: translateY(-83%);
+    top: -100%;
+    position: relative;
+}
+
+.rock1 {
+    z-index: 2;
+    width: 80%;
+    position: relative;
+    transform: translate(-30%, -30%);
+
+}
+
+.rock2 {
+    transform: translate(170px, -20%);
+    width: 50%;
+    position: relative;
 
 }
