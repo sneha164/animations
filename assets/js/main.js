@@ -43,32 +43,44 @@ document.querySelectorAll('.slider_navlink').forEach((bullet, bulletIndex) => {
   });
 });
 
+
 function slide() {
   const text1 = document.getElementById('text1');
   const text2 = document.getElementById('text2');
   const transition = document.getElementById('transition-part');
+  const grass = document.getElementById('grass');
+  const mountains = document.getElementById('mountains');
+  const forest1 = document.getElementById('forest1');
+  const forest2 = document.getElementById('forest2');
+  const button = document.querySelector(".btn");
+  const text2Bottom = text2.querySelector('.bottom');  
 
   text1.style.opacity = '0';
   text1.style.visibility = 'hidden';
 
   transition.style.opacity = '1';
   transition.style.visibility = 'visible';
+  text2.style.opacity = '1';
+  text2.style.visibility = 'visible';
+  transition.style.transform = 'translateY(-83%)';
+  grass.style.transform = 'translateY(0%)';
+
+  mountains.classList.add('scaled-down');
+  forest1.classList.add('scaled-down');
+  forest2.classList.add('scaled-down');
+  text2Bottom.classList.add('animate');
 
   setTimeout(() => {
-    transition.style.opacity = '1';
-    transition.style.visibility = 'visible';
+      transition.style.opacity = '1';
+      transition.style.visibility = 'visible';
+  }, 1000);
 
-    text2.style.opacity = '1';
-    text2.style.visibility = 'visible';
-  }, 500); 
+  button.style.transition = 'margin-left 1s ease ';
+  button.style.marginLeft = '143px'; 
 }
+
 const button = document.querySelector(".btn");
-
-const callback = () => {
-	button.classList.add("clicked");
-};
-
-button.addEventListener("click", callback);
+button.addEventListener("click", slide);
 
 
 
