@@ -181,15 +181,44 @@ body {
     }
 }
 
+
+
 .nike {
     position: relative;
     overflow: hidden;
     height: 100vh;
-    background: linear-gradient(269.2deg, #14ABF6 18.25%, #B013E7 97.02%);
-    opacity: 1;
     width: 100%;
+    background: linear-gradient(269.2deg, #14ABF6 18.25%, #B013E7 97.02%);
 }
 
+.nike .background-blue,
+.nike .background-red {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.8s cubic-bezier(1, 0, 1, 0.2);
+    z-index: 1;
+}
+
+.nike .background-blue {
+    background: linear-gradient(269.2deg, #14ABF6 18.25%, #B013E7 97.02%);
+    transform: translateX(-100%);
+}
+
+.nike .background-red {
+    background: linear-gradient(89.45deg, #E70F3E -1.08%, #940185 99.56%);
+    transform: translateX(100%);
+}
+
+.nike .background-blue.active,
+.nike .background-red.active {
+    transform: translateX(0%);
+}
+
+
+.nike .background-red.show {
+    transform: translateX(0%);
+}
 
 .hamburger {
     padding-inline: 40px;
@@ -199,52 +228,32 @@ body {
     gap: 20%;
     align-items: center;
     z-index: 2;
-
-    .material-symbols-outlined {
-
-        font-size: 40px;
-
-    }
-
-    ul {
-        display: flex;
-        gap: 30px;
-    }
-
-    li {
-        font-family: "montserrat";
-        font-size: 32px;
-        font-weight: 500;
-        text-align: center;
-        list-style: none;
-    }
-
-    a {
-        text-decoration: none;
-        color: #FFFFFF;
-    }
-
-    .icons {
-        color: #ffffff;
-    }
 }
 
-.transitioning {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    transition: transform 1.5s ease;
-
+.hamburger .material-symbols-outlined {
+    font-size: 40px;
 }
 
-.transitioning.add {
-    opacity: 1;
-    transform: translateX(0%);
+.hamburger ul {
+    display: flex;
+    gap: 30px;
 }
 
-.transitioning.remove {
-    opacity: 0;
-    transform: translateX(-100%);
+.hamburger li {
+    font-family: "montserrat";
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+    list-style: none;
+}
+
+.hamburger a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.hamburger .icons {
+    color: #ffffff;
 }
 
 .slider {
@@ -252,25 +261,21 @@ body {
     overflow: hidden;
     position: absolute;
     width: 75%;
-    transform: translateX(-50%);
     left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
 }
 
 .container {
     height: 100vh;
     overflow: hidden;
     width: 100%;
-    transition: opacity 0s ease, transform 1.5s ease;
+    transition: transform 1.4s cubic-bezier(1, 0.2, 1, 0.2);
+    position: absolute;
+    
 }
-
-.nike .slider.active .container {
+.slides .acitve{
     opacity: 1;
-    transform: translateX(0%);
-}
-
-.nike .slider:not(.active) .container {
-    opacity: 0;
-    transform: translateX(-100%);
 }
 
 
@@ -293,9 +298,9 @@ body {
 
 .nike .title {
 
-    transform: translate(70px, 290px);
+    transform: translate(60px, 290px);
     font-family: "Fugaz One" !important;
-    font-size: 220px;
+    font-size: 230px;
     font-weight: 400;
     margin: 0;
     line-height: 1;
@@ -306,7 +311,7 @@ body {
 }
 
 .mask-text {
-    color: transparent;
+    color: transparent !important;
     -webkit-text-stroke: 2px white;
 }
 
@@ -346,7 +351,7 @@ body {
 }
 
 .arrow {
-    transform: translateY(95%);
+    transform: translateY(40%);
     width: 100%;
     height: 100%;
     z-index: 2;
@@ -522,25 +527,25 @@ body {
 .landscape .text2 button {
     padding: 20px 32px;
 }
-
-.text1 .btn {
-    margin-left: 0px;
+.btn {
     transition: margin-left 1s ease;
 }
 
-.text2 .bottom {
-    right: 0;
+.btn.hide {
     opacity: 0;
-    transform: scaleX(0);
-    transition: transform 1s ease, opacity 1s ease;
-    transition-duration: 1s;
 }
 
-.text2 .bottom.animate {
+.text2 .bottom {
+    overflow: hidden;
+    opacity: 0;
+    width: 0;
+    transition: width 1s ease, opacity 0.5s ease;
+}
+
+.text2 .bottom.expanded {
+    width: 230px; 
     opacity: 1;
-    transform: scaleX(1);
 }
-
 
 
 .text2 .bottom p {
@@ -563,8 +568,8 @@ body {
     padding: 0 0 0 30px;
 }
 
-.landscape .text1,
-.landscape .text2,
+.landscape .title1,
+.landscape .title2,
 .transition-part {
     opacity: 1;
     transition: opacity 2s ease, visibility 2.5s ease, transform 1.5s ease;
@@ -576,7 +581,7 @@ body {
     z-index: 5;
 }
 
-#text2, .transition-part {
+.title2, .transition-part {
     opacity: 0;
     visibility: hidden;
 }
@@ -621,7 +626,7 @@ body {
 .wind1 img,
 .cloud1 img {
     position: relative;
-    animation: run1 15s linear infinite;
+    animation: run1 10s linear infinite;
 }
 
 @keyframes run1 {
@@ -652,7 +657,7 @@ body {
 .cloud3 img,
 .cloud4 img {
     position: relative;
-    animation: run2 15s linear infinite;
+    animation: run2 10s linear infinite;
 }
 
 @keyframes run2 {
